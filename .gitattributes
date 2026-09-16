@@ -1,0 +1,5 @@
+/codex-safe/** text eol=lf
+/docs/fork/HARDENING_PLAN*.md text eol=lf
+/scripts/build-codex-safe.mjs text eol=lf
+/scripts/codex-safe.test.mjs text eol=lf
+/scripts/install-codex-safe.mjs text eol=lf

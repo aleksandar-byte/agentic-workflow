@@ -1,0 +1,6 @@
+interface:
+  display_name: "Agentic Debt Review"
+  short_description: "Read-only technical-debt classification"
+  default_prompt: "Use $agentic-review-debt to review the requested change and return evidence-backed findings without modifying anything."
+policy:
+  allow_implicit_invocation: false

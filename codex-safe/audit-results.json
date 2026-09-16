@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-09-16",
+  "distributionVersion": "0.1.0",
+  "sourceRepository": "https://github.com/gtrabanco/agentic-workflow",
+  "auditedSourceCommit": "9a312e97ea334efbd851827357aff19f9f0e9d94",
+  "priorAuditCommit": "b535866633bbc4afbd75f013ad957d3068e64976",
+  "scope": {
+    "selectedSkills": 8,
+    "registeredSourceSkills": 39,
+    "generatedFiles": 18,
+    "selectedSourceChangedSincePriorAudit": false,
+    "piPackageIncluded": false,
+    "hooksIncluded": false,
+    "stateChangingSkillsIncluded": false
+  },
+  "checks": {
+    "currentTreeSecretPatternFiles": 0,
+    "newUpstreamHistorySecretMatches": 0,
+    "trackedSymlinks": 0,
+    "suspiciousRuntimeExecutionMatches": 0,
+    "osvPackagesQueried": 168,
+    "osvAffectedPackages": 0,
+    "microsoftDefenderRepoDetections": 0,
+    "microsoftDefenderSignatureVersion": "1.459.219.0",
+    "nativeCodexSkillsValidated": 8,
+    "nativeCodexSkillValidationFailures": 0,
+    "windowsInstallerTestsPassed": 11,
+    "windowsInstallerTestsFailed": 0,
+    "linuxInstallerTestsPassed": 11,
+    "linuxInstallerTestsFailed": 0,
+    "linuxDeterministicBuildPassed": true
+  },
+  "releaseStatus": "READY_FOR_FORK_REVIEW_AND_TAG",
+  "installationAllowed": false
+}

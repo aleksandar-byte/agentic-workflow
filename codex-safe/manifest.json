@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "distribution": {
+    "name": "agentic-workflow-codex-safe",
+    "version": "0.1.0",
+    "releaseTag": "codex-safe-v0.1.0",
+    "sourceRepository": "https://github.com/gtrabanco/agentic-workflow",
+    "auditedSourceCommit": "9a312e97ea334efbd851827357aff19f9f0e9d94",
+    "installScope": "project-only",
+    "implicitInvocation": false,
+    "includesPiPackage": false
+  },
+  "selected": [
+    {
+      "source": "review-a11y",
+      "target": "agentic-review-a11y",
+      "risk": "R0",
+      "displayName": "Agentic Accessibility Review",
+      "shortDescription": "Read-only accessibility change review",
+      "description": "Review a user-facing change for accessibility issues and return evidence-backed findings without modifying files. Use only when explicitly invoked."
+    },
+    {
+      "source": "review-brand",
+      "target": "agentic-review-brand",
+      "risk": "R0",
+      "displayName": "Agentic Brand Review",
+      "shortDescription": "Read-only brand and copy review",
+      "description": "Review changed user-facing copy against the project's brand guidance and return evidence-backed findings without modifying files. Use only when explicitly invoked."
+    },
+    {
+      "source": "review-code",
+      "target": "agentic-review-code",
+      "risk": "R0",
+      "displayName": "Agentic Code Review",
+      "shortDescription": "Read-only correctness and code review",
+      "description": "Review a code change for correctness, error handling, duplication, dead code, and simplification opportunities without modifying files. Use only when explicitly invoked."
+    },
+    {
+      "source": "review-debt",
+      "target": "agentic-review-debt",
+      "risk": "R0",
+      "displayName": "Agentic Debt Review",
+      "shortDescription": "Read-only technical-debt classification",
+      "description": "Classify an existing findings table into evidence-backed technical-debt outcomes without rescanning or modifying files. Use only when explicitly invoked."
+    },
+    {
+      "source": "review-design",
+      "target": "agentic-review-design",
+      "risk": "R0",
+      "displayName": "Agentic Design Review",
+      "shortDescription": "Read-only UI and UX design review",
+      "description": "Review a changed user interface against the project's design guidance and return evidence-backed findings without modifying files. Use only when explicitly invoked."
+    },
+    {
+      "source": "review-implementation",
+      "target": "agentic-review-implementation",
+      "risk": "R0",
+      "displayName": "Agentic Implementation Review",
+      "shortDescription": "Read-only findings synthesis and routing",
+      "description": "Synthesize and classify supplied review findings into a fixed decision table without editing code, files, or external systems. Use only when explicitly invoked."
+    },
+    {
+      "source": "review-security",
+      "target": "agentic-review-security",
+      "risk": "R0",
+      "displayName": "Agentic Security Review",
+      "shortDescription": "Read-only security change review",
+      "description": "Review a changed surface for secrets, injection, authorization, privacy, and dependency risks without modifying files. Use only when explicitly invoked."
+    },
+    {
+      "source": "review-seo",
+      "target": "agentic-review-seo",
+      "risk": "R0",
+      "displayName": "Agentic SEO Review",
+      "shortDescription": "Read-only technical SEO change review",
+      "description": "Review changed public web surfaces for indexability, metadata, structured data, and crawlability without modifying files. Use only when explicitly invoked."
+    }
+  ],
+  "excluded": [
+    { "source": "audit-docs", "risk": "R1", "reason": "Can repair documentation files on request." },
+    { "source": "audit-pr", "risk": "R2", "reason": "Can post pull-request comments and depends on broader workflow state." },
+    { "source": "bump-skill", "risk": "R2", "reason": "Rewrites versioned files and prepares commits." },
+    { "source": "design-feature", "risk": "R1", "reason": "Creates or updates product design artifacts." },
+    { "source": "discover-repository-state", "risk": "R2", "reason": "Writes and commits a repository-state artifact." },
+    { "source": "evidence-grounding", "risk": "R1", "reason": "Participates in authoring and rotating artifact state." },
+    { "source": "execute-phase", "risk": "R2", "reason": "Edits code, commits, pushes, and can create pull requests." },
+    { "source": "fold-findings", "risk": "R2", "reason": "Repairs findings, commits, and pushes changes." },
+    { "source": "generate-docs", "risk": "R1", "reason": "Writes generated documentation." },
+    { "source": "implementation-discovery", "risk": "R0", "reason": "Read-only but tightly coupled to the excluded execution workflow." },
+    { "source": "init-workspace", "risk": "R2", "reason": "Writes scaffolding, installs hooks, and can change forge labels." },
+    { "source": "log-session", "risk": "R1", "reason": "Appends to the project session log." },
+    { "source": "orchestration-envelope", "risk": "R2", "reason": "Carries commit, push, and pull-request execution contracts." },
+    { "source": "phase-contract", "risk": "R0", "reason": "Depends on a repository-root phase-lint script not shipped by a normal skill install." },
+    { "source": "plan-feature", "risk": "R1", "reason": "Creates planning and roadmap artifacts." },
+    { "source": "plan-feature-from-issue", "risk": "R1", "reason": "Creates feature planning artifacts from forge data." },
+    { "source": "plan-feature-scaffold", "risk": "R1", "reason": "Writes a complete planning artifact scaffold." },
+    { "source": "plan-fix", "risk": "R2", "reason": "Writes and locally commits fix planning artifacts." },
+    { "source": "planning-preflight", "risk": "R0", "reason": "Internal workflow gate coupled to excluded planning skills." },
+    { "source": "pre-execution-review", "risk": "R1", "reason": "Owns mutable planning ledgers and snapshot receipts." },
+    { "source": "product-audit", "risk": "R2", "reason": "Persists and commits a product audit report." },
+    { "source": "resolve-repository-state", "risk": "R1", "reason": "Updates frozen repository facts or accepted decisions." },
+    { "source": "review-change", "risk": "R2", "reason": "Persists findings and can post pull-request comments." },
+    { "source": "review-perf", "risk": "R0", "reason": "May execute benchmarks; deferred until command side effects are isolated." },
+    { "source": "review-plan", "risk": "R0", "reason": "Depends on unbundled snapshot scripts and planning-workflow state." },
+    { "source": "review-spec", "risk": "R0", "reason": "Depends on unbundled snapshot scripts and planning-workflow state." },
+    { "source": "review-verify", "risk": "R1", "reason": "Intentionally mutates or stashes code to prove tests detect breakage." },
+    { "source": "ship-roadmap", "risk": "R2", "reason": "Can coordinate commits, pull requests, and merges, including full-auto mode." },
+    { "source": "triage-issue", "risk": "R2", "reason": "Can comment on, label, or create forge issues." },
+    { "source": "verification-contract", "risk": "R1", "reason": "Creates acceptance manifests and mutable execution receipts." },
+    { "source": "workflow-status", "risk": "R0", "reason": "Depends on unbundled repository scripts and has unresolved Windows portability failures." }
+  ]
+}

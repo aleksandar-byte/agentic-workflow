@@ -4,12 +4,14 @@
 
 ## Status
 
-Planned. Do not install skills from this fork until the acceptance gate below passes.
+Implemented as a release candidate on `hardening/codex-distribution`; not installed. Windows and Linux acceptance checks pass. Do not install until the fork pull request is reviewed, merged, and tagged.
 
 - Upstream: `gtrabanco/agentic-workflow`
-- Audited baseline: `b535866633bbc4afbd75f013ad957d3068e64976`
+- Audited baseline: `9a312e97ea334efbd851827357aff19f9f0e9d94` (including a delta audit from the original `b535866633bbc4afbd75f013ad957d3068e64976` review)
 - Intended environment: Codex on Windows
 - Distribution boundary: selected skills only; no global install; no Pi package
+
+The release candidate contains eight namespaced, explicit-only, findings-only review skills. The complete 39-skill risk register excludes every authoring, mutable verification, git, forge, hook, autopilot, and unbundled-script workflow. The installer targets only the officially supported repository path `<project>/.agents/skills`, defaults to dry-run, verifies file hashes, and fails on collisions or overwrites.
 
 ## Goal
 
@@ -19,7 +21,7 @@ Create a small, reviewable Codex distribution that cannot silently widen the use
 
 1. Installation is project-scoped and allowlisted. Nothing is copied to the global Codex skills directory during development or testing.
 2. A skill may inspect or plan within the user's request, but commits, pushes, pull-request changes, issue comments, labels, merges, workspace initialization, and other external mutations require explicit authorization for the named target.
-3. State-changing and broad orchestration skills are explicit-only in Codex.
+3. Every selected skill is explicit-only in Codex; state-changing and broad orchestration skills are not distributed.
 4. Full-auto merging and optional session hooks are disabled in the Codex distribution.
 5. The Pi package and its dependency tree are excluded.
 6. Every installed skill is self-contained: all referenced scripts and references ship inside its folder or through a versioned shared package that the installer verifies.
@@ -40,13 +42,13 @@ Create a small, reviewable Codex distribution that cannot silently widen the use
 ### P2 — Add Codex invocation controls
 
 - Add `agents/openai.yaml` to each selected skill.
-- Set `policy.allow_implicit_invocation: false` for all `R1`, `R2`, router, and generic orchestration skills.
+- Set `policy.allow_implicit_invocation: false` for every selected skill.
 - Keep names and descriptions narrow enough to avoid unrelated activation.
 - Validate each selected skill with the native Codex skill validator.
 
 ### P3 — Enforce authorization boundaries
 
-- Rewrite write-capable instructions so authorization for planning does not authorize execution.
+- Exclude write-capable instructions from the release candidate; any future inclusion requires a separate reviewed adapter.
 - Before any mutation, require a preview naming the repository, branch, files, issue or pull request, external destination, and exact action.
 - Add a stop point for commit, push, comment, label, merge, deletion, overwrite, or workspace scaffolding unless that exact action was requested.
 - Disable `ship-roadmap --fullauto`, the transient merge wrapper, and automatic hook installation in the Codex build.
@@ -81,7 +83,7 @@ Installation is permitted only when all of these are true:
 
 - Every selected skill and resource is named in the manifest.
 - Every path referenced by an installed skill resolves after installation.
-- All `R1`, `R2`, router, and orchestration skills are explicit-only.
+- All included skills are explicit-only; every `R1`, `R2`, router, and orchestration skill is excluded.
 - Mutation tests stop before acting without target-specific authorization.
 - Full-auto merge and optional hooks are absent or disabled.
 - Windows and Linux checks pass without privileged symlinks or hard-coded temporary paths.
@@ -89,6 +91,6 @@ Installation is permitted only when all of these are true:
 - Security scans report no unresolved high-severity findings.
 - The release receipt pins exact commits and hashes.
 
-## Recommended first implementation unit
+## Recommended next unit
 
-Implement P1 and P2 together for a small read-only pilot set. This establishes the install boundary and invocation policy before any high-impact workflow is adapted.
+After the pull request and acceptance gate pass, obtain explicit approval for one named non-production repository and run the project-scoped pilot. Keep every excluded workflow unavailable.
