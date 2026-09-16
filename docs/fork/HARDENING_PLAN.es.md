@@ -4,12 +4,14 @@
 
 ## Estado
 
-Planificado. No instalar habilidades desde este fork hasta que se supere la puerta de aceptación siguiente.
+Implementado como candidato de publicación en `hardening/codex-distribution`; no instalado. Las comprobaciones de aceptación en Windows y Linux se superaron. No instalar hasta que el pull request del fork sea revisado, fusionado y etiquetado.
 
 - Upstream: `gtrabanco/agentic-workflow`
-- Base auditada: `b535866633bbc4afbd75f013ad957d3068e64976`
+- Base auditada: `9a312e97ea334efbd851827357aff19f9f0e9d94` (incluye una auditoría del delta desde la revisión original `b535866633bbc4afbd75f013ad957d3068e64976`)
 - Entorno previsto: Codex en Windows
 - Límite de distribución: solo habilidades seleccionadas; sin instalación global; sin paquete Pi
+
+El candidato de publicación contiene ocho habilidades de revisión con espacio de nombres, invocación solo explícita y salida limitada a hallazgos. El registro completo de riesgos de las 39 habilidades excluye todos los flujos de autoría, verificación mutable, git, forge, hooks, piloto automático y scripts no empaquetados. El instalador apunta únicamente a la ruta oficial del repositorio `<proyecto>/.agents/skills`, usa el modo de prueba por defecto, verifica hashes y falla ante colisiones o sobrescrituras.
 
 ## Objetivo
 
@@ -19,7 +21,7 @@ Crear una distribución pequeña y revisable para Codex que no pueda ampliar sil
 
 1. La instalación se limita al proyecto y usa una lista permitida. Durante el desarrollo o las pruebas no se copia nada al directorio global de habilidades de Codex.
 2. Una habilidad puede inspeccionar o planificar dentro de la solicitud del usuario, pero los commits, pushes, cambios en pull requests, comentarios en issues, etiquetas, merges, inicialización del espacio de trabajo y otras mutaciones externas requieren autorización explícita para el objetivo nombrado.
-3. Las habilidades que cambian estado y las de orquestación amplia son solo de invocación explícita en Codex.
+3. Cada habilidad seleccionada es solo de invocación explícita en Codex; las habilidades que cambian estado y las de orquestación amplia no se distribuyen.
 4. El merge totalmente automático y los hooks de sesión opcionales quedan deshabilitados en la distribución para Codex.
 5. El paquete Pi y su árbol de dependencias quedan excluidos.
 6. Cada habilidad instalada es autosuficiente: todos los scripts y referencias usados se incluyen dentro de su carpeta o mediante un paquete compartido versionado que el instalador verifica.
@@ -40,13 +42,13 @@ Crear una distribución pequeña y revisable para Codex que no pueda ampliar sil
 ### P2 — Añadir controles de invocación de Codex
 
 - Añadir `agents/openai.yaml` a cada habilidad seleccionada.
-- Definir `policy.allow_implicit_invocation: false` para todas las habilidades `R1`, `R2`, de enrutamiento y de orquestación genérica.
+- Definir `policy.allow_implicit_invocation: false` para cada habilidad seleccionada.
 - Mantener nombres y descripciones suficientemente específicos para evitar activaciones no relacionadas.
 - Validar cada habilidad seleccionada con el validador nativo de habilidades de Codex.
 
 ### P3 — Aplicar límites de autorización
 
-- Reescribir las instrucciones con capacidad de escritura para que autorizar la planificación no autorice la ejecución.
+- Excluir del candidato de publicación las instrucciones con capacidad de escritura; cualquier inclusión futura requiere un adaptador revisado por separado.
 - Antes de cualquier mutación, exigir una vista previa que nombre el repositorio, rama, archivos, issue o pull request, destino externo y acción exacta.
 - Añadir un punto de parada para commits, pushes, comentarios, etiquetas, merges, eliminaciones, sobrescrituras o creación de estructura del espacio de trabajo, salvo que se haya solicitado esa acción exacta.
 - Deshabilitar `ship-roadmap --fullauto`, el wrapper transitorio de merge y la instalación automática de hooks en la compilación para Codex.
@@ -81,7 +83,7 @@ La instalación solo se permite cuando se cumpla todo lo siguiente:
 
 - Cada habilidad y recurso seleccionado figura en el manifiesto.
 - Cada ruta referenciada por una habilidad instalada se resuelve después de la instalación.
-- Todas las habilidades `R1`, `R2`, de enrutamiento y de orquestación son solo de invocación explícita.
+- Todas las habilidades incluidas son solo de invocación explícita; se excluyen todas las habilidades `R1`, `R2`, de enrutamiento y de orquestación.
 - Las pruebas de mutación se detienen antes de actuar sin autorización específica para el objetivo.
 - El merge totalmente automático y los hooks opcionales están ausentes o deshabilitados.
 - Las comprobaciones en Windows y Linux pasan sin symlinks privilegiados ni rutas temporales fijas.
@@ -89,6 +91,6 @@ La instalación solo se permite cuando se cumpla todo lo siguiente:
 - Los análisis de seguridad no muestran hallazgos graves sin resolver.
 - El recibo de publicación fija commits y hashes exactos.
 
-## Primera unidad de implementación recomendada
+## Siguiente unidad recomendada
 
-Implementar juntas P1 y P2 para un pequeño conjunto piloto de solo lectura. Esto establece el límite de instalación y la política de invocación antes de adaptar cualquier flujo de alto impacto.
+Después de superar el pull request y la puerta de aceptación, obtener aprobación explícita para un repositorio no productivo nombrado y ejecutar el piloto limitado al proyecto. Mantener indisponibles todos los flujos excluidos.

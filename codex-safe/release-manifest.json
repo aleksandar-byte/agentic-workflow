@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "distribution": {
+    "name": "agentic-workflow-codex-safe",
+    "version": "0.1.0",
+    "releaseTag": "codex-safe-v0.1.0",
+    "sourceRepository": "https://github.com/gtrabanco/agentic-workflow",
+    "auditedSourceCommit": "9a312e97ea334efbd851827357aff19f9f0e9d94",
+    "installScope": "project-only",
+    "implicitInvocation": false,
+    "includesPiPackage": false
+  },
+  "safetyPolicy": {
+    "selectedRisk": "R0",
+    "explicitInvocationOnly": true,
+    "projectScopedOnly": true,
+    "collisionPolicy": "fail",
+    "overwritePolicy": "forbidden",
+    "symlinkPolicy": "forbidden"
+  },
+  "skills": [
+    {
+      "source": "review-a11y",
+      "name": "agentic-review-a11y",
+      "sourceVersion": "1.1.0",
+      "risk": "R0"
+    },
+    {
+      "source": "review-brand",
+      "name": "agentic-review-brand",
+      "sourceVersion": "1.1.0",
+      "risk": "R0"
+    },
+    {
+      "source": "review-code",
+      "name": "agentic-review-code",
+      "sourceVersion": "1.2.0",
+      "risk": "R0"
+    },
+    {
+      "source": "review-debt",
+      "name": "agentic-review-debt",
+      "sourceVersion": "1.1.0",
+      "risk": "R0"
+    },
+    {
+      "source": "review-design",
+      "name": "agentic-review-design",
+      "sourceVersion": "1.1.0",
+      "risk": "R0"
+    },
+    {
+      "source": "review-implementation",
+      "name": "agentic-review-implementation",
+      "sourceVersion": "1.7.0",
+      "risk": "R0"
+    },
+    {
+      "source": "review-security",
+      "name": "agentic-review-security",
+      "sourceVersion": "1.1.0",
+      "risk": "R0"
+    },
+    {
+      "source": "review-seo",
+      "name": "agentic-review-seo",
+      "sourceVersion": "1.1.0",
+      "risk": "R0"
+    }
+  ],
+  "files": [
+    {
+      "path": "skills/agentic-review-a11y/agents/openai.yaml",
+      "sha256": "422dd0514336d30c1bb5fb2134e46679fa695291b0d9482cb77ec9d64b5e048f",
+      "bytes": 302
+    },
+    {
+      "path": "skills/agentic-review-a11y/SKILL.md",
+      "sha256": "cc289ec9abee154a023bf85c96a6b9522474c5d8174143f1bbb3ef0ef8989322",
+      "bytes": 3748
+    },
+    {
+      "path": "skills/agentic-review-brand/agents/openai.yaml",
+      "sha256": "f4c8e43ba1a1e1c8e19a2fe4d4501379cf5bfb14422912a58de73ed0cf2331ab",
+      "bytes": 289
+    },
+    {
+      "path": "skills/agentic-review-brand/SKILL.md",
+      "sha256": "d736be1ad7f42f38d3145144f41e1171dd17d506d1cd3903110282a1e26fb38e",
+      "bytes": 3798
+    },
+    {
+      "path": "skills/agentic-review-code/agents/openai.yaml",
+      "sha256": "e126c1cf115b3337bb20dfb344b03192fc33f2b8b6a7b70f178224ce27d4f6c5",
+      "bytes": 293
+    },
+    {
+      "path": "skills/agentic-review-code/SKILL.md",
+      "sha256": "a5b186cfc21d082b950300dd81b13b48cfc7c616a8466043dc889d688949387c",
+      "bytes": 4017
+    },
+    {
+      "path": "skills/agentic-review-debt/agents/openai.yaml",
+      "sha256": "026efa3046ee36b1a5125c12d8cc7863507850fa9e05f61640a75ef499f45066",
+      "bytes": 295
+    },
+    {
+      "path": "skills/agentic-review-debt/SKILL.md",
+      "sha256": "626ffb75b32dfcae99d67353041e681c57acb840bf9ad32390cc5eec0519051f",
+      "bytes": 3931
+    },
+    {
+      "path": "skills/agentic-review-design/agents/openai.yaml",
+      "sha256": "75a9fa77f9ac38e4229d18fc663f9fb589ece949522208f9f313eaba4fd4efc3",
+      "bytes": 293
+    },
+    {
+      "path": "skills/agentic-review-design/SKILL.md",
+      "sha256": "2719253f47a998403e8f3cc9fac4fd3a214009de98df50fdcab61f04e327a220",
+      "bytes": 3803
+    },
+    {
+      "path": "skills/agentic-review-implementation/agents/openai.yaml",
+      "sha256": "ed42d9a805b83c9b89270564c543fb95566c95893043b388db2e44bbfd50a01a",
+      "bytes": 316
+    },
+    {
+      "path": "skills/agentic-review-implementation/references/CLASSIFY.md",
+      "sha256": "6150f10fbfbd397af1ade62854ad6bd345af2892132bc32cb9e0225868177455",
+      "bytes": 8005
+    },
+    {
+      "path": "skills/agentic-review-implementation/references/FIND.md",
+      "sha256": "e93ae0f667cb13074ca3e0df80a22a3b16dae1570f537411db773edb4a65992e",
+      "bytes": 3031
+    },
+    {
+      "path": "skills/agentic-review-implementation/SKILL.md",
+      "sha256": "c03dbc4c8a386686fadc5554a97cd058599a497277e1968dbcbaf7ac85b6eed3",
+      "bytes": 5973
+    },
+    {
+      "path": "skills/agentic-review-security/agents/openai.yaml",
+      "sha256": "de0789beec03b7add31e064ee8825c047ef03c25316fd5032c9e5f16d96a31b3",
+      "bytes": 296
+    },
+    {
+      "path": "skills/agentic-review-security/SKILL.md",
+      "sha256": "2b9a59d0bc07ef79665a3f08805462fe83eeab5c80645551d715b54fcec73e7c",
+      "bytes": 3785
+    },
+    {
+      "path": "skills/agentic-review-seo/agents/openai.yaml",
+      "sha256": "72f7a4ac53b28b70321eec31b895c2bcfc3ef4f1aaa9bc7021f1952bb7ef328f",
+      "bytes": 291
+    },
+    {
+      "path": "skills/agentic-review-seo/SKILL.md",
+      "sha256": "aeaee2c86cb578b1ccbd38ceee4d271a008fad41f571e4ac863fd11de28fc6f9",
+      "bytes": 3819
+    }
+  ]
+}
